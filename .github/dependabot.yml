@@ -1,0 +1,25 @@
+version: 2
+
+updates:
+  # --- Python (pyproject.toml / uv.lock, managed via uv) ---
+  - package-ecosystem: "uv"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    groups:
+      # This is a small project with only ~4 dev-only tools (pytest, ruff,
+      # mypy, etc.); bundling their patch/minor bumps into one PR keeps
+      # noise down without hiding anything that could break the runtime API.
+      dev-dependencies:
+        dependency-type: "development"
+        update-types:
+          - "minor"
+          - "patch"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "uv"
