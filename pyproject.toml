@@ -22,7 +22,7 @@ classifiers = [
 ]
 requires-python = ">=3.10"
 dependencies = [
-    "mcp>=1.5.0",
+    "mcp>=1.28.1",
     "phue>=1.1",
 ]
 
